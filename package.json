@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "node babel dist/server.js",
+    "start": "node dist/server.js",
     "heroku-postbuild": "yarn cache clean &&  NODE_ENV=PRODUCTION babel src -d dist --copy-files",
     "serve": "nodemon --exec babel-node src/server.js",
     "seed": "babel-node src/seed.js"
@@ -13,6 +13,7 @@
     "yarn": "1.9.2"
   },
   "dependencies": {
+    "@babel/runtime": "^7.0.0",
     "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
