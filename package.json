@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon --exec babel-node src/server.js",
-    "build": "NODE_ENV=PRODUCTION babel src -d dist --copy-files",
-    "serve": "NODE_ENV=production babel node dist/index.js",
+    "start": "node dist/server.js",
+    "heroku-postbuild": "NODE_ENV=PRODUCTION babel src -d dist --copy-files",
+    "serve": "nodemon --exec babel-node src/server.js",
     "seed": "babel-node src/seed.js"
+  },
+  "engines": {
+    "node": "8.11.3",
+    "yarn": "1.9.2"
   },
   "dependencies": {
     "bcrypt": "^3.0.0",
