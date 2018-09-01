@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "node dist/server.js",
+    "start": "node babel dist/server.js",
     "heroku-postbuild": "yarn cache clean &&  NODE_ENV=PRODUCTION babel src -d dist --copy-files",
     "serve": "nodemon --exec babel-node src/server.js",
     "seed": "babel-node src/seed.js"
