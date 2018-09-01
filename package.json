@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node dist/server.js",
-    "heroku-postbuild": "NODE_ENV=PRODUCTION babel src -d dist --copy-files",
+    "heroku-postbuild": "yarn cache clean &&  NODE_ENV=PRODUCTION babel src -d dist --copy-files",
     "serve": "nodemon --exec babel-node src/server.js",
     "seed": "babel-node src/seed.js"
   },
