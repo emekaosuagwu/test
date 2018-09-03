@@ -3,13 +3,14 @@ import bcrypt from 'bcrypt';
 const saltRounds = 10;
 
 const UserSchema = new Schema({
-  first_name: { type: String, required: true },
-  last_name: { type: String, required: true },
-  middle_name: { type: String, required: true },
-  image: { type: String, required: true },
-  gender: { type: String, required: true },
-  nationality: { type: Schema.Types.ObjectId, required: true, ref: 'Country' },
+  first_name: { type: String },
+  last_name: { type: String },
+  middle_name: { type: String },
+  image: { type: String },
+  gender: { type: String },
+  nationality: { type: Schema.Types.ObjectId, ref: 'Country' },
   languages: [{ type: Schema.Types.ObjectId, ref: 'Language' }],
+  phone: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   reset_token: { type: String },
