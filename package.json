@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "postinstall": "NODE_ENV=PRODUCTION babel src -d dist --copy-files",
-    "start": "NODE_ENV=production node dist/server.js",
+    "start": "NODE_ENV=PRODUCTION node dist/server.js",
     "start:dev": "nodemon --exec babel-node src/server.js",
     "build": "NODE_ENV=PRODUCTION babel src -d dist --copy-files",
     "seed": "babel-node src/seed.js"
@@ -17,6 +17,7 @@
     "@babel/runtime": "^7.0.0",
     "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "express-validation": "^1.0.2",

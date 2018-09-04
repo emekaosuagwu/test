@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken';
-
 import UserModel from '../../models/user';
 import { CompleteRegistrationTemplate } from '../../utils/EmailTemplates';
 import Mail from '../../utils/mailer';
@@ -37,7 +36,7 @@ const requiredStringFields = [
 	requiredStringFields.map(field => {
 		if(!field || typeof field != "string") {
 			let errObject = {};
-			errObject.status = 401;
+			errObject.status = 404;
 			errObject.details = `${field} is not a valid string`;
 			errors.push(errObject);
 		}
@@ -89,6 +88,6 @@ const requiredStringFields = [
 	else {
 		const payload = {};
 		payload.error = errors;
-		res.status(401).json(payload);
+		res.status(200).json(payload);
 	}
 };
