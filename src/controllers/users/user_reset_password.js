@@ -1,14 +1,10 @@
-import mongoose from 'mongoose';
-import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
-import bcrypt from 'bcrypt';
 
 import UserModel from '../../models/user';
 import * as Helpers from '../../utils/Helpers';
-import { PasswordRecoveryTemplate, CompleteRegistrationTemplate } from '../../utils/EmailTemplates';
+import { PasswordRecoveryTemplate } from '../../utils/EmailTemplates';
 import Mail from '../../utils/mailer';
 
-const saltRounds = 10;
 
  /**
   * [description user login controller]

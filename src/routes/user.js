@@ -7,6 +7,8 @@ UserRoutes.get('/',  UserController.Init);
 UserRoutes.get('/validate_token/:token', UserController.ValidateResetToken);
 UserRoutes.get('/complete_profile/:id', UserController.ValidateReturningUser);
 
+UserRoutes.put('/update', UserController.UpdateUserInformation);
+
 UserRoutes.post('/login', UserController.Login);
 UserRoutes.post('/register', UserController.Register);
 UserRoutes.post('/reset', UserController.PasswordReset);

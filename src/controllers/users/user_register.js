@@ -25,7 +25,7 @@ export default (req, res) => {
 	const errors = [];
 
 	/**
-	 *  extracting data from request body 
+	 *  extracting data from request body
 	 */
 	let {
 		first_name,
@@ -43,10 +43,8 @@ export default (req, res) => {
 		access_level,
 	} = req.body;
 
-	/**
-	 * [requiredStringFields request validation requirement]
-	 * @type {Array}
-	 */
+  // requiredStringFields request validation requirement
+
 	const requiredStringFields = [
 		first_name,
 		last_name,
@@ -60,11 +58,8 @@ export default (req, res) => {
 		access_level,
 	];
 
-	/**
-	 * [requiredStringFields validating request body params]
-	 * @param  {[type]} field [description]
-	 * @return {[type]}       [description]
-	 */
+	// requiredStringFields validating request body params
+
 	requiredStringFields.map(field => {
 		if(!field || typeof field != "string") {
 			let errObject = {};
@@ -121,7 +116,7 @@ export default (req, res) => {
 				errors.push(errObject);
 			}
 		})
-	} 
+	}
 	else {
 		let errObject = {};
 		errObject.status = 401;
@@ -165,7 +160,7 @@ export default (req, res) => {
 		 * @return {[type]}       [description]
 		 */
 		User.save((err, userInfo) => {
-			
+
 			if (err) {
 				payload.error = { status: 500, details: err };
 				return res.status(500).json(payload);
@@ -175,7 +170,7 @@ export default (req, res) => {
 			 * add comment
 			 */
 			const emailSubject = `Hi ${userInfo.first_name} please complete your Trouvise registration`;
-			
+
 			/**
 			 * add comment
 			 */
@@ -209,10 +204,10 @@ export default (req, res) => {
 			userData.user = userObj;
 			userData.token = userToken;
 			payload.data = userData;
-			
+
 			res.status(200).json(payload);
 		})
-	} 
+	}
 	else {
 		const payload = {};
 		payload.error = errors;

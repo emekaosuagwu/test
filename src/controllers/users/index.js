@@ -2,6 +2,7 @@ import Login from './user_login';
 import Register from './user_register';
 import QuickRegister from './quick_register';
 import PasswordReset from './user_reset_password';
+import UpdateUserInformation from './update_user';
 import PasswordRecovery from './user_password_recovery';
 import ValidateResetToken from './validate_request_token';
 import ValidateReturningUser from './validate_returning_user';
@@ -24,5 +25,6 @@ export {
 	PasswordReset,
 	PasswordRecovery,
 	ValidateResetToken,
-	ValidateReturningUser
+  ValidateReturningUser,
+  UpdateUserInformation,
 };
