@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
 
 import UserModel from '../../models/user';
@@ -19,12 +18,12 @@ export default (req, res) => {
  	const errors = [];
 
  	/**
- 	 *  extracting data from request body 
+ 	 *  extracting data from request body
  	 */
  	const { email, password } = req.body;
- 	
+
  	/**
- 	 *  add comment 
+ 	 *  add comment
  	 */
  	const incomingPayload = [email, password];
 
@@ -67,7 +66,7 @@ export default (req, res) => {
  					const payload = {};
  					const userData = {};
  					const userToken = jwt.sign({userID: user._id}, process.env.JWT_SECRET);
- 					
+
  					/**
  					 * [userInfo description]
  					 * @type {Object}
@@ -83,13 +82,13 @@ export default (req, res) => {
  					userData.token = userToken;
  					payload.data = userData;
  					res.status(200).json(payload);
- 				} 
+ 				}
  				else {
  					return Helpers.errorResponseWithStatus(res, 401, 'Username or password does not exist in the database');
  				}
  			});
  		});
- 	} 
+ 	}
  	else {
  		const payload = {};
  		payload.error = errors;
