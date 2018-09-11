@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
-import WorkHistory from '../../models/work_history';
+import WorkHistoryModel from '../../models/work_history';
 import { errorResponseWithStatus } from '../../utils/Helpers';
 
  /**
@@ -72,6 +72,20 @@ export default (req, res) => {
 
  	if(errors.length === 0) {
 
+ 			const payload = {};
+ 			
+ 			const WorkHistory = new WorkHistoryModel({
+				user_id, 
+				company_name,
+				company_website,
+				company_icon,
+				company_address,
+				start_date,
+				end_date,
+				job_description,
+				job_title,
+ 			});
+
 			WorkHistory.save((err, userInfo) => {
 
 				if (err) {
@@ -79,23 +93,23 @@ export default (req, res) => {
 					return res.status(500).json(payload);
 				}
 
-	      		// a constant that holds info about email subject to be sent
+	   //    		// a constant that holds info about email subject to be sent
 
-				const emailSubject = `Hi ${userInfo.email} please complete your Trouvise registration`;
+				// const emailSubject = `Hi ${userInfo.email} please complete your Trouvise registration`;
 
-	      		// A jwt that will be appended to the mail link for validate user
-				const userData = {};
-				const userToken = jwt.sign({userID: userInfo._id}, process.env.JWT_SECRET);
-				const userObj = {
-					email: userInfo.email,
-					access: userInfo.access
-				};
+	   //    		// A jwt that will be appended to the mail link for validate user
+				// const userData = {};
+				// const userToken = jwt.sign({userID: userInfo._id}, process.env.JWT_SECRET);
+				// const userObj = {
+				// 	email: userInfo.email,
+				// 	access: userInfo.access
+				// };
 
-				userData.user = userObj;
-				userData.token = userToken;
-				payload.data = userData;
+				// userData.user = userObj;
+				// userData.token = userToken;
+				// payload.data = userData;
 
-				res.status(200).json(payload);
+				// res.status(200).json(payload);
 			})
  	}
  	else {
