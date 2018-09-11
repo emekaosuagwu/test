@@ -1,9 +1,8 @@
 import express from 'express';
-import * as CountriesController from '../controllers/country'
+import * as WorkHistoryController from '../controllers/work_history'
 
-const CountryRoutes = express.Router();
+const WorkHistoryRoutes = express.Router();
 
-CountryRoutes.get('/', CountriesController.GetCountries);
-CountryRoutes.post('/add', CountriesController.AddCountry);
+CountryRoutes.get('/', WorkHistoryController.init);
 
-export default CountryRoutes;
+export default WorkHistoryRoutes;

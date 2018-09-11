@@ -30,5 +30,6 @@ mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true })
 app.use('/api/user', AppRoutes.UserRoutes);
 app.use('/api/country', AppRoutes.CountryRoutes);
 app.use('/api/language', AppRoutes.LanguageRoutes);
+app.use('/api/work_history', AppRoutes.WorkHistoryRoutes);
 
 app.listen(port, () => console.log(`Server running on port:${port}!`));
