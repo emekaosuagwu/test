@@ -8,7 +8,7 @@ const AppRoutes = {
 	UserRoutes,
 	CountryRoutes,
 	LanguageRoutes,
-	WorkHistoryRoutes
+	WorkHistoryRoutes,
 	EducationRoutes,
 };
 

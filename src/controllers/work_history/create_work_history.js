@@ -30,7 +30,6 @@ export default (req, res) => {
  	 *  extracting data from request body
  	 */
  	const { 
- 		user_id, 
  		company_name,
  		company_website,
  		company_icon,
@@ -44,8 +43,7 @@ export default (req, res) => {
  	/**
  	 *  add comment
  	 */
- 	const incomingPayload = [
- 		user_id, 
+ 	const incomingPayload = [ 
  		company_name,
  		company_website,
  		company_icon,
@@ -75,7 +73,7 @@ export default (req, res) => {
  			const payload = {};
  			
  			const WorkHistory = new WorkHistoryModel({
-				user_id, 
+				user_id: res.locals.userID, 
 				company_name,
 				company_website,
 				company_icon,
@@ -86,30 +84,16 @@ export default (req, res) => {
 				job_title,
  			});
 
-			WorkHistory.save((err, userInfo) => {
+			WorkHistory.save((err, work_history_info) => {
 
 				if (err) {
 					payload.error = { status: 500, details: err };
 					return res.status(500).json(payload);
 				}
 
-	   //    		// a constant that holds info about email subject to be sent
+				payload.data = work_history_info;
 
-				// const emailSubject = `Hi ${userInfo.email} please complete your Trouvise registration`;
-
-	   //    		// A jwt that will be appended to the mail link for validate user
-				// const userData = {};
-				// const userToken = jwt.sign({userID: userInfo._id}, process.env.JWT_SECRET);
-				// const userObj = {
-				// 	email: userInfo.email,
-				// 	access: userInfo.access
-				// };
-
-				// userData.user = userObj;
-				// userData.token = userToken;
-				// payload.data = userData;
-
-				// res.status(200).json(payload);
+				res.status(200).json(payload);
 			})
  	}
  	else {
