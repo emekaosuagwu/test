@@ -20,11 +20,11 @@ const Init = (req, res) => {
 export {
 	Init,
 	Login,
-  Register,
-  QuickRegister,
+  	Register,
+  	QuickRegister,
 	PasswordReset,
 	PasswordRecovery,
 	ValidateResetToken,
-  ValidateReturningUser,
-  UpdateUserInformation,
+  	ValidateReturningUser,
+  	UpdateUserInformation,
 };
