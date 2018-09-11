@@ -1,11 +1,5 @@
-// import Login from './user_login';
-
-const Init = (req, res) => {
-
-	Mail("emeka@gmail.com", "emailSubject", {}, CompleteRegistrationTemplate("tokenizedID"));
-	res.status(200).send(`We're running on user route!`)
-};
+import CreateWorkHistory from './create_work_history';
 
 export {
-	Init,
+	CreateWorkHistory
 };
