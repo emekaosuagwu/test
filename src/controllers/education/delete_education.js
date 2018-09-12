@@ -18,8 +18,8 @@ export default (req, res) => {
       return errorResponseWithStatus(res, 404, 'Cannot find education info with that ID');
     }
 
-    if (eduHistory.user_id !== res.locals.userID) {
-      return errorResponseWithStatus(res, 404, 'You are not authorized to delete this education history');
+    if (eduHistory.user_id != res.locals.userID) {
+      return errorResponseWithStatus(res, 404, '!You are not authorized to delete this education history');
     }
 
     EducationModel.findByIdAndRemove(edu_id, (err, deletedEdu) => {

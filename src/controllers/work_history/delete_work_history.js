@@ -29,7 +29,7 @@ export default (req, res) => {
 			return errorResponseWithStatus(res, 404, 'Cannot find work history info with that ID');
 		}
 
-		if (res.locals.userID !== work_history.user_id)
+		if (res.locals.userID != work_history.user_id)
 		{
 			return errorResponseWithStatus(res, 500, `User don't have access to delete work history`);
     }
