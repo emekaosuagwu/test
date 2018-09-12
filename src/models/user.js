@@ -3,25 +3,71 @@ import bcrypt from 'bcrypt';
 const saltRounds = 10;
 
 const UserSchema = new Schema({
-  first_name: { type: String },
-  last_name: { type: String },
-  middle_name: { type: String },
-  image: { type: String },
-  gender: { type: String },
-  nationality: { type: Schema.Types.ObjectId, ref: 'Country' },
-  languages: [{ type: Schema.Types.ObjectId, ref: 'Language' }],
-  phone: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  reset_token: { type: String },
-  reset_token_expiry: { type: String },
-  oauth_id: { type: String },
-  account_type: { type: String, required: true },
-  access: {
-    title: { type: String, required: true },
-    level: { type: String, required: true },
+  first_name: {
+    type: String
   },
-  created_at: { type: Date, default: Date.now },
+  last_name: {
+    type: String
+  },
+  middle_name: {
+    type: String
+  },
+  image: {
+    type: String
+  },
+  gender: {
+    type: String
+  },
+  nationality: {
+    type: Schema.Types.ObjectId,
+    ref: 'Country'
+  },
+  languages: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Language'
+    }
+  ],
+  phone: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  reset_token: {
+    type: String
+  },
+  reset_token_expiry: {
+    type: String
+  },
+  oauth_id: {
+    type: String
+  },
+  account_type: {
+    type: String,
+    required: true
+  },
+  access: {
+    title: {
+      type: String,
+      required: true
+    },
+    level: {
+      type: String,
+      required: true
+    },
+  },
+  created_at: {
+    type: Date,
+    default: Date.now
+  },
 });
 
 UserSchema.pre('save', function (next) {

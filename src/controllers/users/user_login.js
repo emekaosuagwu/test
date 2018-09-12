@@ -4,15 +4,14 @@ import UserModel from '../../models/user';
 import * as Helpers from '../../utils/Helpers';
 
  /**
-  * [description user login controller]
-  * @param  {[type]} req [description]
-  * @param  {[type]} res [description]
-  * @return {[type]}     [description]
+  * Controls the Login endpoint. Handles authentication of users.
+  * @param  {Object} req express request object that handles request made to server
+  * @param  {Object} res express response object that handles response from server
   */
 export default (req, res) => {
 
  	/**
- 	 * [errors error bag]
+ 	 * Accumulator that stores req.body params' error
  	 * @type {Array}
  	 */
  	const errors = [];
@@ -23,14 +22,12 @@ export default (req, res) => {
  	const { email, password } = req.body;
 
  	/**
- 	 *  add comment
+ 	 *  creating a new arrray that stores req params to make validation easier
  	 */
  	const incomingPayload = [email, password];
 
  	/**
- 	 * [description validating request body params]
- 	 * @param  {[type]} field [description]
- 	 * @return {[type]}       [description]
+ 	 * Check if field exist and if field is a valid string
  	 */
  	incomingPayload.map(field => {
  		if (!field || typeof field != "string") {
@@ -68,8 +65,8 @@ export default (req, res) => {
  					const userToken = jwt.sign({userID: user._id}, process.env.JWT_SECRET);
 
  					/**
- 					 * [userInfo description]
- 					 * @type {Object}
+ 					 * If user authentication is successful. The object below will be
+            * added to the payload that will be sent to the client
  					 */
  					const userInfo = {
  						name: `${user.first_name} ${user.last_name}`,
