@@ -54,7 +54,6 @@ export default (req, res) => {
 	];
 
 	// requiredStringFields validating request body params
-
 	requiredStringFields.map(field => {
 		if(!field || typeof field != "string") {
 			let errObject = {};
