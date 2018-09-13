@@ -92,7 +92,6 @@ export default (req, res) => {
           return errorResponseWithStatus(res, 500, 'User info update failed');
         }
 
-        const payload = {};
 
         const dataObj = {
           success: true,
@@ -104,6 +103,7 @@ export default (req, res) => {
           }
         };
 
+        const payload = {};
         payload.data = dataObj;
         res.status(200).json(payload);
       })

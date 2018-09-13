@@ -40,6 +40,10 @@ export default (req, res) => {
 
   if (errors.length === 0) {
 
+    /**
+     * res.locals.userID contains user ID that is passed into handler function
+     * from validate-request.js middleware.
+     */
     eduInfoObj.user_id = res.locals.userID;
     const Education = new EducationModel({...eduInfoObj});
     Education.save((err, eduInfo) => {

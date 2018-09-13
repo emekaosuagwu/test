@@ -7,10 +7,9 @@ import Mail from '../../utils/mailer';
 
 
  /**
-  * [description user login controller]
-  * @param  {[type]} req [description]
-  * @param  {[type]} res [description]
-  * @return {[type]}     [description]
+  * Controls the Login endpoint. Handles authentication of users.
+  * @param  {Object} req express request object that handles request made to server
+  * @param  {Object} res express response object that handles response from server
   */
   export default (req, res) => {
 
