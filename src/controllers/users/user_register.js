@@ -54,7 +54,6 @@ export default (req, res) => {
 	];
 
 	// requiredStringFields validating request body params
-
 	requiredStringFields.map(field => {
 		if(!field || typeof field != "string") {
 			let errObject = {};
@@ -162,32 +161,35 @@ export default (req, res) => {
 			}
 
 			/**
-			 * add comment
+			 * Create a dynamic email subject that contains user's first name
 			 */
 			const emailSubject = `Hi ${userInfo.first_name} please complete your Trouvise registration`;
 
 			/**
-			 * add comment
+			 * Create jwt to encrypt user's ID. This will be sent to user
+       * mailbox box to continue registration
 			 */
 			const tokenizedID = jwt.sign({ UserID: userInfo._id }, process.env.JWT_SECRET);
 
 			/**
-			 * add comment
+			 * Call the email function that will send email to users
+       * once rgistration is successful
 			 */
 			Mail(userInfo.email, emailSubject, res, CompleteRegistrationTemplate(tokenizedID));
 
 			/**
-			 * add comment
+			 * An accumulator object that will store info that will be
+       * delivered as payload to the client
 			 */
 			const userData = {};
 
 			/**
-			 * add comment
+			 * Encrypt user token
 			 */
-			const userToken = jwt.sign({userID: userInfo._id}, process.env.JWT_SECRET);
+			// const userToken = jwt.sign({userID: userInfo._id}, process.env.JWT_SECRET);
 
 			/**
-			 * add comment
+			 * An object that info that will be sent as payload to the client
 			 */
 			const userObj = {
 				name: `${userInfo.first_name} ${userInfo.last_name}`,
@@ -197,7 +199,7 @@ export default (req, res) => {
 			};
 
 			userData.user = userObj;
-			userData.token = userToken;
+			userData.token = tokenizedID;
 			payload.data = userData;
 
 			res.status(200).json(payload);
