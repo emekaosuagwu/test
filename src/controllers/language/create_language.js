@@ -1,6 +1,6 @@
 import LanguageModel from '../../models/language'
 
-export default = (req, res) => {
+export default (req, res) => {
 
 	const errors = [];
 	
