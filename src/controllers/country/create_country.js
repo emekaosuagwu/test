@@ -34,6 +34,8 @@ export default (req, res) => {
 		}
 	});
 
+	const payload = {};
+
 	/**
 	 * [if description]
 	 * @param  {[type]} errors.length [description]
@@ -41,7 +43,7 @@ export default (req, res) => {
 	 */
 	if(errors.length === 0) {
 
-		const payload = {};
+
 		const Country = new CountryModel({...req.body});
 
 		Country.save((err, countryInfo) => {
