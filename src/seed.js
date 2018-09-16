@@ -1,10 +1,22 @@
-import faker from "faker";
+import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+
+import faker from "faker";
 import UserModel from './models/user';
 import CountryModel from './models/country';
 
-var user_size = 10
-var nationality_size = 2
+dotenv.config();
+
+
+
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true })
+  .then(() => console.log('Database Connected'))
+  .catch(error => console.log('Error connecting to database', error));
+
+
+
+var user_size = 1
+var nationality_size = 3
 
 /**
  * [User Model Seeder]
@@ -18,13 +30,10 @@ for (var i = 1; i <= nationality_size; i++) {
 
 	const Country = new CountryModel(data)
 
-	Country.save((err, country_info) => {
-
+	Country.save((err, countryInfo) => {
 		if (err) {
 			console.log(err)
 		}
-
-		console.log(country_info)
 	})
 }
 
@@ -32,36 +41,42 @@ for (var i = 1; i <= nationality_size; i++) {
 // /**
 //  * [User Model Seeder]
 //  */
-// for (var i = 1; i <= user_size; i++) {
+for (var i = 1; i <= user_size; i++) {
 
-// 	var data = {
-//  		first_name: faker.name.firstName(),
-//  		last_name: faker.name.lastName(),
-//  		middle_name: faker.name.firstName(),
-//  		image: faker.image.avatar(),
-//  		gender: "male",
-//  		nationality: 1987878788787,
-//  		languages: 1987878788787,
-//  		email: faker.internet.email(),
-//  		phone: faker.internet.ip(),
-//  		password: faker.internet.password(),
-//  		oauth_id: faker.internet.password(),
-//  		account_type: faker.name.title(),
-//  		reset_token: faker.name.title(),
-//  		reset_token_expiry: faker.name.title(),
-//  		access: {
-//  			title: "fvdfvdfd",
-//  			level: "vsdvsdcsdcsdcsd"
-//  		}
-//  	}
+	var data = {
+ 		first_name: faker.name.firstName(),
+ 		last_name: faker.name.lastName(),
+ 		middle_name: faker.name.firstName(),
+ 		image: faker.image.avatar(),
+ 		gender: "male",
+ 		languages: 1987878788787,
+ 		email: faker.internet.email(),
+ 		phone: faker.internet.ip(),
+ 		password: faker.internet.password(),
+ 		oauth_id: faker.internet.password(),
+ 		account_type: faker.name.title(),
+ 		reset_token: faker.name.title(),
+ 		reset_token_expiry: faker.name.title(),
+ 		access: {
+ 			title: "fvdfvdfd",
+ 			level: "vsdvsdcsdcsdcsd"
+ 		}
+ 	}
 
-//  	console.log(data)
 
-// 	// const User = new UserModel(data)
+ 	CountryModel.find({}, (err, country) => {
+ 		if (err) {
+ 			console.log(err)
+ 		}
 
-// 	// User.save((err, userInfo) => {
-// 	// 	if (err) {
-// 	// 		console.log(err)
-// 	// 	}
-// 	// })
-// }
+ 		data.nationality = country[0]
+ 	})
+
+	const User = new UserModel(data)
+
+	User.save((err, userInfo) => {
+		if (err) {
+			console.log(err)
+		}
+	})
+}

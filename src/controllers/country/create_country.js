@@ -60,6 +60,7 @@ export default (req, res) => {
 			};
 			
 			payload.data = country;
+			
 			res.status(200).json(payload);
 		})
 	} 

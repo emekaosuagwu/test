@@ -1,6 +1,5 @@
 import CountryModel from '../../models/country';
 
-
 /**
  * [description]
  * @param  {[type]} req [description]
