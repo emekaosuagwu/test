@@ -18,7 +18,7 @@ export default (req, res) => {
 
   Object.keys(portfolioInfoObj).map(field => {
 
-    if (typeof field !== 'string' ) {
+    if (typeof portfolioInfoObj[field] !== 'string' ) {
       const error = { status: 404, details: `${field} is not a valid string` };
       errors.push(error);
     }

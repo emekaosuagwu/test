@@ -7,7 +7,7 @@ export default (req, res) => {
 
   PortfolioModel.find({ user_id: userID }, (err, portfolio) => {
     if (err) {
-      return errorResponseWithStatus(res, 401, 'Error! Search operation failed');
+      return errorResponseWithStatus(res, 500, 'Search operation failed. Please make sure userID is correct');
     }
 
     if (!portfolio) {
