@@ -43,7 +43,6 @@ export default (req, res) => {
 	 */
 	if(errors.length === 0) {
 
-
 		const Country = new CountryModel({...req.body});
 
 		Country.save((err, countryInfo) => {
