@@ -3,7 +3,7 @@ import * as CountriesController from '../controllers/country';
 
 const CountryRoutes = express.Router();
 
-CountryRoutes.get('/', CountriesController.GetCountries);
-CountryRoutes.post('/add', CountriesController.AddCountry);
+CountryRoutes.get('/all', CountriesController.AllCountries);
+CountryRoutes.post('/create', CountriesController.CreateCountry);
 
 export default CountryRoutes;

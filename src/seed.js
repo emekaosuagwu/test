@@ -4,7 +4,7 @@ import UserModel from './models/user';
 import CountryModel from './models/country';
 
 var user_size = 10
-var nationality_size = 1
+var nationality_size = 2
 
 /**
  * [User Model Seeder]
@@ -19,7 +19,7 @@ for (var i = 1; i <= nationality_size; i++) {
 	const Country = new CountryModel(data)
 
 	Country.save((err, country_info) => {
-		
+
 		if (err) {
 			console.log(err)
 		}
