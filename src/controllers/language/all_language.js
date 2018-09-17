@@ -1,14 +1,5 @@
-import LanguageModel from '../models/language'
+import LanguageModel from '../../models/language'
 
-export const (req, res) => {
-  let payload = {};
-  LanguageModel.find({}, (err, languages) => {
-    if (err) {
-      payload.error = { status: 401, details: err };
-      res.status(401).json(payload);
-    }
+export default (req, res) => {
 
-    payload.data = languages;
-    res.status(200).json(payload);
-  })
 }

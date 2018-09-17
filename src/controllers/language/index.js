@@ -1,5 +1,6 @@
-import CreateLanguage from './create_language';
+
+import AllLanguages from './all_language';
 
 export {
-	CreateLanguage
+	AllLanguages
 };

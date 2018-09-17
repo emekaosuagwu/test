@@ -1,9 +1,10 @@
 import express from 'express';
 import * as LanguageController from '../controllers/language';
+import ValidateRequest from '../utils/middlewares/validate-request';
 
 const LanguageRoutes = express.Router();
+// LanguageRoutes.use(ValidateRequest);
 
-// LanguageRoutes.get('/all', LanguageController.GetLanguages);
-LanguageRoutes.post('/create', LanguageController.CreateLanguage);
+LanguageRoutes.get('/add', LanguageController.AllLanguages);
 
 export default LanguageRoutes;

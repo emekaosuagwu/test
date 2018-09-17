@@ -7,16 +7,12 @@ import CountryModel from './models/country';
 
 dotenv.config();
 
-
-
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true })
   .then(() => console.log('Database Connected'))
   .catch(error => console.log('Error connecting to database', error));
 
-
-
 var user_size = 1
-var nationality_size = 3
+var nationality_size = 1
 
 /**
  * [User Model Seeder]
@@ -36,7 +32,6 @@ for (var i = 1; i <= nationality_size; i++) {
 		}
 	})
 }
-
 
 // /**
 //  * [User Model Seeder]
@@ -62,7 +57,6 @@ for (var i = 1; i <= user_size; i++) {
  			level: "vsdvsdcsdcsdcsd"
  		}
  	}
-
 
  	CountryModel.find({}, (err, country) => {
  		if (err) {
