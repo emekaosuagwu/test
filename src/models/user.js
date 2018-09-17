@@ -3,92 +3,92 @@ import bcrypt from 'bcrypt';
 const saltRounds = 10;
 
 const UserSchema = new Schema({
-  first_name: {
-    type: String
-  },
-  last_name: {
-    type: String
-  },
-  middle_name: {
-    type: String
-  },
-  image: {
-    type: String
-  },
-  gender: {
-    type: String
-  },
-  nationality: {
-    type: Schema.Types.ObjectId,
-    ref: 'Country'
-  },
-  languages: [
+    first_name: {
+        type: String
+    },
+    last_name: {
+        type: String
+    },
+    middle_name: {
+        type: String
+    },
+    image: {
+        type: String
+    },
+    gender: {
+        type: String
+    },
+    nationality: {
+        type: Schema.Types.ObjectId,
+        ref: 'Country'
+    },
+    languages: [
     {
-      type: Schema.Types.ObjectId,
-      ref: 'Language'
+        type: Schema.Types.ObjectId,
+        ref: 'Language'
     }
-  ],
-  phone: {
-    type: String,
-    required: true
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  password: {
-    type: String,
-    required: true
-  },
-  reset_token: {
-    type: String
-  },
-  reset_token_expiry: {
-    type: String
-  },
-  oauth_id: {
-    type: String
-  },
-  account_type: {
-    type: String,
-    required: true
-  },
-  access: {
-    title: {
-      type: String,
-      required: true
+    ],
+    phone: {
+        type: String,
+        required: false
     },
-    level: {
-      type: String,
-      required: true
+    email: {
+        type: String,
+        required: true,
+        unique: true
     },
-  },
-  created_at: {
-    type: Date,
-    default: Date.now
-  },
+    password: {
+        type: String,
+        required: true
+    },
+    reset_token: {
+        type: String
+    },
+    reset_token_expiry: {
+        type: String
+    },
+    oauth_id: {
+        type: String
+    },
+    account_type: {
+        type: String,
+        required: true
+    },
+    access: {
+        title: {
+            type: String,
+            required: true
+        },
+        level: {
+            type: String,
+            required: true
+        },
+    },
+    created_at: {
+        type: Date,
+        default: Date.now
+    },
 });
 
 UserSchema.pre('save', function (next) {
-  const user = this;
+    const user = this;
 
-  // only hash the password if it has been modified (or is new)
-  if (!user.isModified('password')) return next();
+    // only hash the password if it has been modified (or is new)
+    if (!user.isModified('password')) return next();
 
-  // generate a salt
-  bcrypt.hash(user.password, saltRounds, (err, hash) => {
-    if (err) return next(err);
-    user.password = hash;
-    next()
-  })
+    // generate a salt
+    bcrypt.hash(user.password, saltRounds, (err, hash) => {
+        if (err) return next(err);
+        user.password = hash;
+        next()
+    })
 });
 
 UserSchema.methods.comparePassword = function(incomingPassword, cb) {
-  bcrypt.compare(incomingPassword, this.password, (err, isMatch) => {
+bcrypt.compare(incomingPassword, this.password, (err, isMatch) => {
     if (err) return cb(err);
-    cb(null, isMatch);
-  });
+        cb(null, isMatch);
+    });
 };
 
 export default mongoose.model('User', UserSchema);

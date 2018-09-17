@@ -13,6 +13,8 @@ import Mail from '../../utils/mailer';
  */
 export default (req, res) => {
 
+	console.log(res.body)
+
 	/**
 	 * [errors bags]
 	 * @type {Array}
@@ -50,7 +52,7 @@ export default (req, res) => {
 		password,
 		account_type,
 		access_title,
-		access_level,
+		access_level
 	];
 
 	// requiredStringFields validating request body params
