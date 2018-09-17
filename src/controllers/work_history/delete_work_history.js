@@ -44,15 +44,9 @@ export default (req, res) => {
  //        return errorResponseWithStatus(res, 404, 'Cannot find work history info with that ID');
  //      }
 
- //      const payload = {};
-
- //      payload.data = { success: true, message: 'Work History info deleted successfully' };
- //      res.status(200).json(payload);
-
-	// 	const payload = {};
-		
-	// 	payload.data = { success: true, message: 'Work History info deleted successfully' };
-	// 	res.status(200).json(payload);
-	// })
-} 
-  
+      const payload = {};
+      payload.data = { success: true, message: 'Work History info deleted successfully' };
+      res.status(200).json(payload);
+	});
+});
+};
