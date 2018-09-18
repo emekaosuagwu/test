@@ -1,7 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
 
 const JobSchema = new Schema({
-  comapany_id: {
+  company_id: {
     type: Schema.Types.ObjectId,
     ref: 'Company', required: true
   },

@@ -8,7 +8,7 @@ export default (req, res) => {
 
   const {
     job_title,
-    comapany_id,
+    company_id,
     technologies,
     job_description,
     minimum_requirement,
@@ -16,7 +16,7 @@ export default (req, res) => {
 
   const jobInfoObj = {
     job_title,
-    comapany_id,
+    company_id,
     technologies,
     job_description,
     minimum_requirement,
@@ -24,9 +24,9 @@ export default (req, res) => {
 
   Object.keys(jobInfoObj).map(field => {
 
-    if (field === 'comapany_id') {
+    if (field === 'company_id') {
       if (!mongoose.Types.ObjectId.isValid(jobInfoObj[field])) {
-        const error = { status: 404, details: 'Company ID is not valid' };
+        const error = { status: 404, details: `${field} is not valid` };
         errors.push(error);
       }
     };
@@ -34,7 +34,7 @@ export default (req, res) => {
     if (field === 'technologies') {
 
       if (!Array.isArray(jobInfoObj[field])) {
-        const error = { status: 404, details: 'Technologies should be an array' };
+        const error = { status: 404, details: `${field} should be an array` };
         return errors.push(error);
       }
 
@@ -44,7 +44,7 @@ export default (req, res) => {
       }
     };
 
-    if (field !== 'technologies' && field !== 'comapany_id') {
+    if (field !== 'technologies' && field !== 'company_id') {
       if (!jobInfoObj[field] || typeof jobInfoObj[field] !== "string") {
         const error = { status: 404, details: `${field} is not a valid string` };
         errors.push(error);
@@ -55,7 +55,7 @@ export default (req, res) => {
 
   if (errors.length === 0) {
     const Job = new JobModel({...jobInfoObj});
-    Portfolio.save((err,  jobInfo) => {
+    Job.save((err,  jobInfo) => {
       if (err) {
         return errorResponseWithStatus(res, 500, 'Error, cannot save job posting');
       }
