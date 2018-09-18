@@ -34,4 +34,6 @@ app.use('/api/user/work', AppRoutes.WorkHistoryRoutes);
 app.use('/api/user/education', AppRoutes.EducationRoutes);
 app.use('/api/user/portfolio', AppRoutes.PortfolioRoutes);
 
+app.use('/api/job', AppRoutes.JobRoutes);
+
 app.listen(port, () => console.log(`Server running on port:${port}!`));
