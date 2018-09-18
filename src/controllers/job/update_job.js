@@ -4,13 +4,24 @@ import { errorResponseWithStatus } from '../../utils/Helpers';
 
 export default (req, res) => {
 
+  /**
+   * error accumulator
+  */
   const errors = [];
+
+  /**
+   * check if the object coming from the frontend has more than one
+   * properties including the id of the job to be updated
+  */
   if (Object.keys(req.body).length > 1 && req.body.job_id) {
 
     if (!mongoose.Types.ObjectId.isValid(req.body.job_id)) {
       return errorResponseWithStatus(res, 404, 'Invalid job_id');
     }
 
+    /**
+     * loop through the body object and validate based on field type
+    */
     Object.keys(req.body).map(field => {
 
       switch (field) {
@@ -44,6 +55,9 @@ export default (req, res) => {
     return errorResponseWithStatus(res, 404, "Cannot update job posting with empty data or invalid ID");
   }
 
+  /**
+   * if error accumulator is empty, continue with the update operation
+  */
   if (errors.length === 0) {
     const updateOBj = {...req.body};
     // once comapny registration has been set up. Validation will be done on the company updating it

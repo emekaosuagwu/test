@@ -4,8 +4,14 @@ import { errorResponseWithStatus } from '../../utils/Helpers';
 
 export default (req, res) => {
 
+  /**
+   * error accumulator
+  */
   const errors = [];
 
+  /**
+   * get the content coming from the front-end using es-6 destructuring
+  */
   const {
     job_title,
     company_id,
@@ -14,6 +20,10 @@ export default (req, res) => {
     minimum_requirement,
   } = req.body;
 
+  /**
+   * put all the destructured variables in to a new object
+   * in preparation for validation.
+   */
   const jobInfoObj = {
     job_title,
     company_id,
@@ -22,6 +32,9 @@ export default (req, res) => {
     minimum_requirement,
   };
 
+  /**
+    * loop through the body object and validate based on field type
+  */
   Object.keys(jobInfoObj).map(field => {
 
     if (field === 'company_id') {
@@ -53,6 +66,9 @@ export default (req, res) => {
 
   });
 
+  /**
+   * if error accumulator is empty, continue with the add operation
+  */
   if (errors.length === 0) {
     const Job = new JobModel({...jobInfoObj});
     Job.save((err,  jobInfo) => {
