@@ -36,41 +36,41 @@ for (var i = 1; i <= nationality_size; i++) {
 // /**
 //  * [User Model Seeder]
 //  */
-for (var i = 1; i <= user_size; i++) {
+// for (var i = 1; i <= user_size; i++) {
 
-	var data = {
- 		first_name: faker.name.firstName(),
- 		last_name: faker.name.lastName(),
- 		middle_name: faker.name.firstName(),
- 		image: faker.image.avatar(),
- 		gender: "male",
- 		languages: 1987878788787,
- 		email: faker.internet.email(),
- 		phone: faker.internet.ip(),
- 		password: faker.internet.password(),
- 		oauth_id: faker.internet.password(),
- 		account_type: faker.name.title(),
- 		reset_token: faker.name.title(),
- 		reset_token_expiry: faker.name.title(),
- 		access: {
- 			title: "fvdfvdfd",
- 			level: "vsdvsdcsdcsdcsd"
- 		}
- 	}
+// 	var data = {
+//  		first_name: faker.name.firstName(),
+//  		last_name: faker.name.lastName(),
+//  		middle_name: faker.name.firstName(),
+//  		image: faker.image.avatar(),
+//  		gender: "male",
+//  		languages: 1987878788787,
+//  		email: faker.internet.email(),
+//  		phone: faker.internet.ip(),
+//  		password: faker.internet.password(),
+//  		oauth_id: faker.internet.password(),
+//  		account_type: faker.name.title(),
+//  		reset_token: faker.name.title(),
+//  		reset_token_expiry: faker.name.title(),
+//  		access: {
+//  			title: "fvdfvdfd",
+//  			level: "vsdvsdcsdcsdcsd"
+//  		}
+//  	}
 
- 	CountryModel.find({}, (err, country) => {
- 		if (err) {
- 			console.log(err)
- 		}
+//  	CountryModel.find({}, (err, country) => {
+//  		if (err) {
+//  			console.log(err)
+//  		}
 
- 		data.nationality = country[0]
- 	})
+//  		data.nationality = country[0]
+//  	})
 
-	const User = new UserModel(data)
+// 	const User = new UserModel(data)
 
-	User.save((err, userInfo) => {
-		if (err) {
-			console.log(err)
-		}
-	})
-}
+// 	User.save((err, userInfo) => {
+// 		if (err) {
+// 			console.log(err)
+// 		}
+// 	})
+// }

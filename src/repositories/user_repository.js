@@ -1,11 +1,17 @@
+import LanguageModel from '../models/language'
+
 /**
- * The Contact Repository
+ * 
  */
 class UserRepository {
 
-  list() {
-    return {dsds: "dcsd"};
-  }
+	fineAllLanguages() {
+
+		LanguageModel.find({_id: 1}, (err, languages) => {
+		
+		})
+
+	}
 
 }
 

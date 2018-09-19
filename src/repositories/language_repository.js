@@ -1,12 +1,23 @@
-/**
- * The Contact Repository
- */
-class UserRepository {
+import LanguageModel from '../models/country'
 
-  list() {
-    return {dsds: "dcsd"};
-  }
+/**
+ * 
+ */
+class LanguageRepository {
+
+	async fineAllLanguages() {
+
+		LanguageModel.find({}, (err, languages) => {
+			
+
+			var emeka = "dfvsrd";
+			var ben = "fvdfvdfvdff"
+			return "emeka || ben"
+			
+		})
+
+	}
 
 }
 
-export default UserRepository;
+export default LanguageRepository;

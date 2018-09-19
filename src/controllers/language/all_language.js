@@ -7,19 +7,13 @@ import LanguageRepository from '../../repositories/language_repository'
  */
 const language_repository = new LanguageRepository();
 
+export default async (req, res) => {
 
-export default (req, res) => {
+	let payload = {};
 
-let payload = {};
+	var response = await language_repository.fineAllLanguages();
 
-	LanguageModel.find({}, (err, languages) => {
-	
-		if (err) {
-			payload.error = { status: 401, details: err };
-			res.status(401).json(payload);
-		}
+	console.log(response)
+	res.status(200).json(response);
 
-		payload.data = language_repository.list();
-		res.status(200).json(payload);
-	})
 }
