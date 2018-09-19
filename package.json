@@ -9,10 +9,7 @@
     "build": "NODE_ENV=PRODUCTION babel src -d dist --copy-files",
     "seed": "babel-node src/seed.js"
   },
-  "engines": {
-    "node": "8.11.3",
-    "yarn": "1.9.2"
-  },
+
   "dependencies": {
     "@babel/runtime": "^7.0.0",
     "bcrypt": "^3.0.0",
