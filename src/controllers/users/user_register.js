@@ -40,8 +40,7 @@ export default (req, res) => {
 		access_level,
 	} = req.body;
 
-  // requiredStringFields request validation requirement
-
+  	// requiredStringFields request validation requirement
 	const requiredStringFields = [
 		first_name,
 		last_name,
@@ -169,19 +168,19 @@ export default (req, res) => {
 
 			/**
 			 * Create jwt to encrypt user's ID. This will be sent to user
-       * mailbox box to continue registration
+       		 * mailbox box to continue registration
 			 */
 			const tokenizedID = jwt.sign({ UserID: userInfo._id }, process.env.JWT_SECRET);
 
 			/**
 			 * Call the email function that will send email to users
-       * once rgistration is successful
+       		 * once rgistration is successful
 			 */
 			Mail(userInfo.email, emailSubject, res, CompleteRegistrationTemplate(tokenizedID));
 
 			/**
 			 * An accumulator object that will store info that will be
-       * delivered as payload to the client
+       		 * delivered as payload to the client
 			 */
 			const userData = {};
 

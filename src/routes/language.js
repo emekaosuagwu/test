@@ -3,6 +3,6 @@ import * as LanguageController from '../controllers/language';
 
 const LanguageRoutes = express.Router();
 
-LanguageRoutes.get('/', LanguageController.GetLanguages);
+LanguageRoutes.get('/', LanguageController.AllLanguages);
 
 export default LanguageRoutes;

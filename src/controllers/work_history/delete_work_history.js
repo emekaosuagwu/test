@@ -47,6 +47,6 @@ export default (req, res) => {
       const payload = {};
       payload.data = { success: true, message: 'Work History info deleted successfully' };
       res.status(200).json(payload);
-	// });
-// });
+	});
+});
 };
