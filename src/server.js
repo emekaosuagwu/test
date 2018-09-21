@@ -22,7 +22,7 @@ app.use(logger);
 app.use(cors(corsOptions));
 app.use(bodyParser.json({type: 'application/json'}));
 
-mongoose.connect(process.env.MLAB_URL, { useNewUrlParser: true })
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true })
   .then(() => console.log('Database Connected'))
   .catch(error => console.log('Error connecting to database', error));
 

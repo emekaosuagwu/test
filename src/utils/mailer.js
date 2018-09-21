@@ -43,7 +43,7 @@ const Mail = (
     if (error) {
       const payload = {};
       payload.error = { status: 401, details: error };
-      return payload;
+      return response.status(401).json(payload);
     }
 
     const payload = {};
