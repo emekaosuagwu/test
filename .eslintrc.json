@@ -25,6 +25,10 @@
             "error",
             "always"
         ],
-        "no-console": 0
+        "no-console": "warn",
+        "comma-dangle": [
+            "error", 
+            "always-multiline"
+        ]
     }
 }

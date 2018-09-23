@@ -15,31 +15,31 @@ const port = process.env.PORT || 3000;
 const allowedOrigin = process.env.NODE_ENV != "PRODUCTION" ? "http://localhost:9000" : process.env.CLIENT_URL;
 
 const corsOptions = {
+
 	origin: allowedOrigin,
 
 	/**
 	 * some legacy browsers ( e.g IE11) choke on 204
 	 * @type {Number}
 	 */
-	optionsSuccessStatus: 200
+	optionsSuccessStatus: 200,
 };
 
 app.use(logger);
 app.use(cors(corsOptions));
 app.use(bodyParser.json({type: "application/json"}));
 
-mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true })
-	.then(() => console.log("Database Connected"))
-	.catch(error => console.log("Error connecting to database", error));
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true }).then().catch();
 
-// Route middlewares
+/**
+ * Route middlewares
+ */
 app.use("/api/user", AppRoutes.UserRoutes);
 app.use("/api/country", AppRoutes.CountryRoutes);
 app.use("/api/language", AppRoutes.LanguageRoutes);
 app.use("/api/user/work", AppRoutes.WorkHistoryRoutes);
 app.use("/api/user/education", AppRoutes.EducationRoutes);
 app.use("/api/user/portfolio", AppRoutes.PortfolioRoutes);
-
 app.use("/api/job", AppRoutes.JobRoutes);
 
-app.listen(port, () => console.log(`Server running on port:${port}!`));
+app.listen(port);
