@@ -32,15 +32,9 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-
-    deployment:
-      staging:
-        branch: master
-        heroku:
-          appname: foo-bar-123
         
       # run tests!
-      - run: npm run code:test
+      - run: npm test
 
 
 
