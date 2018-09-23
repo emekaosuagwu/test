@@ -8,7 +8,7 @@
     "start:dev": "nodemon --exec babel-node src/server.js",
     "build": "NODE_ENV=PRODUCTION babel src -d dist --copy-files",
     "seed": "babel-node src/seed.js",
-    "test": "eslint src/server.js"
+    "test": "eslint src/**"
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
