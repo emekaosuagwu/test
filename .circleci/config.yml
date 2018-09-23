@@ -4,6 +4,8 @@
 #
 version: 2
 
+
+
 jobs:
 
   build:
@@ -32,7 +34,7 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-          
+
     deployment:
       staging:
         branch: master
