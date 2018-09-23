@@ -7,7 +7,8 @@
     "start": "NODE_ENV=PRODUCTION node dist/server.js",
     "start:dev": "nodemon --exec babel-node src/server.js",
     "build": "NODE_ENV=PRODUCTION babel src -d dist --copy-files",
-    "seed": "babel-node src/seed.js"
+    "seed": "babel-node src/seed.js",
+    "code:test": "eslint src/**"
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
@@ -20,17 +21,22 @@
     "jsonwebtoken": "^8.3.0",
     "moment": "^2.22.2",
     "mongoose": "^5.2.8",
-    "nodemailer": "^4.6.8"
+    "nodemailer": "^4.6.8",
+    "webpack": "^4.19.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "8",
+    "babel-loader": "^8.0.2",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-2": "^6.24.1",
-    "eslint": "^5.6.0",
+    "eslint": "4.x",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
     "faker": "^4.1.0",
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.18.4",
+    "webpack-cli": "^3.1.1"
   }
 }
